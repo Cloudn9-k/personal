@@ -15,8 +15,8 @@
 Them thong tin nuoc hoa
 <form action="/buoi2/them" method="post">
     ten<input type="text" name="ten"><br>
-    slg<input type="text" name="soLuong" ><br>
-    gia <input type="text" name="gia" ><br>
+    slg<input type="text" name="soLuong"><br>
+    gia <input type="text" name="gia"><br>
     <button>Submit</button>
 </form>
 Thong tin nuoc hoa
@@ -31,15 +31,19 @@ Thong tin nuoc hoa
     </tr>
     </thead>
     <tbody>
-        <c:forEach items="${danhSach}" var="nh">
+    <c:forEach items="${danhSach}" var="nh">
         <tr>
             <td>${nh.id}</td>
             <td>${nh.ten}</td>
             <td>${nh.soLuong}</td>
             <td>${nh.gia}</td>
-            <td> <a href="/buoi2/chi-tiet?id=${nh.id}">Chi tiet</a></td>
+            <td>
+                <a href="/buoi2/chi-tiet?id=${nh.id}">Chi tiet</a>
+                <a href="/buoi2/view-update?id=${nh.id}">View update</a>
+                <a href="/buoi2/xoa?id=${nh.id}">xoa</a>
+            </td>
         </tr>
-        </c:forEach>
+    </c:forEach>
 
     </tbody>
 </table>

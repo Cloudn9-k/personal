@@ -1,6 +1,8 @@
-package com.example.botucsof3012.buoi2.utils;
+package com.example.botucsof3012.buoi3.util;
 
 import com.example.botucsof3012.buoi2.model.NuocHoa;
+import com.example.botucsof3012.buoi3.model.KhachSan;
+import com.example.botucsof3012.buoi3.model.Phong;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +25,8 @@ public class HibernateConfig {
         properties.put(Environment.PASS, "123456");
         properties.put(Environment.SHOW_SQL, "true");
 
-        conf.addAnnotatedClass(NuocHoa.class);
+        conf.addAnnotatedClass(KhachSan.class);
+        conf.addAnnotatedClass(Phong.class);
 
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

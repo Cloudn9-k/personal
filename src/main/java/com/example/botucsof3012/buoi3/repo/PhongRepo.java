@@ -1,51 +1,52 @@
-package com.example.botucsof3012.buoi2.repo;
+package com.example.botucsof3012.buoi3.repo;
 
-import com.example.botucsof3012.buoi2.model.NuocHoa;
-import com.example.botucsof3012.buoi2.utils.HibernateConfig;
-import jakarta.servlet.http.HttpServlet;
+import com.example.botucsof3012.buoi3.model.Phong;
+import com.example.botucsof3012.buoi3.util.HibernateConfig;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class NuocHoaReposistory {
+public class PhongRepo {
     private Session session = null;
 
-    public NuocHoaReposistory() {
+    public PhongRepo() {
         session = HibernateConfig.getFACTORY().openSession();
     }
 
-    public List<NuocHoa> getAll() {
-        return session.createQuery("FROM NuocHoa").list();
+    public List<Phong> getAllPhong() {
+        return session.createQuery("FROM Phong").list();
     }
 
-    public NuocHoa chiTiet(Integer id) {
-        return session.find(NuocHoa.class, id);
+    public Phong getPhong(Integer id) {
+        return session.find(Phong.class, id);
     }
 
-    public void them(NuocHoa nuocHoa) {
+    public void themPhong(Phong phong) {
         try {
             session.getTransaction().begin();
-            session.save(nuocHoa);
+            session.save(phong);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
     }
-    public void update(NuocHoa nuocHoa) {
+
+    public void suaPhong(Phong phong) {
         try {
             session.getTransaction().begin();
-            session.merge(nuocHoa);
+            session.merge(phong);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
         }
     }
-    public void xoa(Integer id) {
+
+    public void xoaPhong(Integer id) {
         try {
             session.getTransaction().begin();
-            session.delete(this.chiTiet(id));
+            session.delete(this.getPhong(id));
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
